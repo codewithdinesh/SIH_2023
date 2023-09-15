@@ -12,6 +12,8 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
+import Link from "next/link";
+
 
 const HEADER_HEIGHT = rem(60);
 
@@ -78,16 +80,16 @@ const navbarLinks = [
     ],
   },
   {
-    label: 'Summarisation',
+    label: 'Summarization',
     link: '/summarisation',
   },
   {
     label: 'Document Chat',
-    link: '/doc-chat',
+    link: '/ai/docs',
   },
   {
-    label: 'QNA',
-    link: '/qna',
+    label: 'Chatbot',
+    link: '/ai/chat',
   },
   {
     label: 'Hire Lawyer',
@@ -100,14 +102,14 @@ const LowerNavBar = () => {
   const [opened, { toggle }] = useDisclosure(false);
   const items = navbarLinks.map((link) => {
     const menuItems = link.links?.map((item) => (
-      <Menu.Item key={item.link}>{item.label}</Menu.Item>
+      <Menu.Item key={item.link}><Link href={item.link}>{item.label}</Link></Menu.Item>
     ));
 
     if (menuItems) {
       return (
         <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
           <Menu.Target>
-            <a
+            <Link
               href={link.link}
               className={classes.link}
               onClick={(event) => event.preventDefault()}
@@ -116,7 +118,7 @@ const LowerNavBar = () => {
                 <span className={classes.linkLabel}>{link.label}</span>
                 <IconChevronDown size={rem(12)} stroke={1.5} />
               </Center>
-            </a>
+            </Link>
           </Menu.Target>
           <Menu.Dropdown>{menuItems}</Menu.Dropdown>
         </Menu>

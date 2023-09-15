@@ -6,9 +6,7 @@ const doc = () => {
   return (
     <Container size={'xl'}>
 
-      <Title order={1}>       
-       Upload Your Legal Document and Get Summarized Output
-      </Title>
+    
 
       <FileUpload />
     </Container>

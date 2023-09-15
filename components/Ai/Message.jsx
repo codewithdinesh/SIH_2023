@@ -1,13 +1,17 @@
 
 import React from 'react';
-import { Flex, Paper, Text } from '@mantine/core';
+import { Flex, Paper, Text, ActionIcon, Group, Textarea } from '@mantine/core';
+import { IconUser } from "@tabler/icons-react";
+
 
 function Message({ text, isReceived }) {
 
   const messageStyles = {
     marginBottom: '0.5rem', // Adjust as needed
-    backgroundColor: isReceived ? 'lightblue' : 'lightgreen', // Adjust colors
-  
+    backgroundColor: isReceived ? '#ffedde' : '#4b2f01', // Adjust colors
+    color: isReceived ? '#120e07' : 'white',
+    fontWeight: "200"
+
   };
 
   const paperStyles = {
@@ -26,7 +30,16 @@ function Message({ text, isReceived }) {
       flexDirection: isReceived ? "" : "row-reverse",
     }}>
       <Paper style={paperStyles}>
-        <Text size="sm">{text}</Text>
+        {/* <Text size="sm">{text}</Text> */}
+        <ActionIcon variant="light" mb={"lg"}>
+          <IconUser size="1.125rem" />
+        </ActionIcon>
+        <Textarea
+          autosize
+          minRows={1}
+          value={text}
+          
+        />
       </Paper>
     </Flex>
   );

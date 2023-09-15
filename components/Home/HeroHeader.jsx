@@ -69,13 +69,12 @@ const HeroHeader = () => {
   // TODO:laws ko replace karke umbrella naam de do
   return (
     <div>
-      <Container style={{ maxWidth: "72rem" }}>
+      <Container style={{ maxWidth: "100%", display:"flex",justifyContent:"space-around" }}>
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>
               Welcome to <span className={classes.highlight + " z-0"}>LegalSathi</span> Platform 👋<br />
             </Title>
-            {/* <Text c="dimmed" mt={40}>We provide</Text> */}
             <List
               mt={40}
               spacing="sm"
@@ -110,6 +109,46 @@ const HeroHeader = () => {
           <Image src={"images/hero-img.svg"} className={classes.image} alt="Hero Header Illustration" />
         </div>
       </Container>
+      {/* <div>
+        <div>
+        <Title className={classes.title}>
+              Welcome to <span className={classes.highlight + " z-0"}>LegalSathi</span> Platform 👋<br />
+            </Title>
+            <List
+              mt={40}
+              spacing="sm"
+              size="sm"
+              icon={
+                <ThemeIcon size={20} radius="xl">
+                  <IconCheck size={rem(12)} stroke={1.5} />
+                </ThemeIcon>
+              }
+            >
+
+              <List.Item>
+                <b>Comprehensive Legal Hub</b>
+              </List.Item>
+              <List.Item>
+                <b>Digital Assistance</b>
+              </List.Item>
+              <List.Item>
+                <b> Simplified Legal Information</b>
+              </List.Item>
+              <List.Item>
+                <b> Connect with Experienced Lawyers </b>
+              </List.Item>
+              <List.Item>
+                <b> Streamline Legal Documents </b>
+              </List.Item>
+            </List>
+            <Button radius="sm" size="md" mt={70} title="Get started" className={classes.control} rightIcon={<IconArrowRight />}>
+              Get started
+            </Button>
+        </div>
+        <div>
+        <Image src={"images/hero-img.svg"} className={classes.image} alt="Hero Header Illustration" />
+        </div>
+      </div> */}
     </div>
   );
 }

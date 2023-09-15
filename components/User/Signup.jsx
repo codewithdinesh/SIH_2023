@@ -26,9 +26,8 @@ const useStyles = createStyles((theme) => ({
   },
 
   form: {
-    borderRight: `${rem(1)} solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
-    }`,
+    borderRight: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
+      }`,
     minHeight: rem(900),
     maxWidth: rem(450),
     paddingTop: rem(80),
@@ -65,7 +64,6 @@ const Signup = () => {
   });
   return (
     <div>
-      <Navbar />
       <div className={classes.wrapper}>
         <Paper className={classes.form} radius={0} p={30}>
           <Title

@@ -1,6 +1,6 @@
 // components/Chat.js
 import React, { useState } from 'react';
-import { Container, Paper, Input, Button, Flex } from '@mantine/core';
+import { Container, Paper, Input, Button, Flex, Title } from '@mantine/core';
 import Message from './Message';
 import { IconSend } from "@tabler/icons-react";
 
@@ -29,6 +29,11 @@ function Chat() {
   };
 
   return (
+    <>
+
+    <Title ta={"center"} m={"lg"}>
+      Legal Assistant
+    </Title>
     <Container
       size="md"
       style={{
@@ -36,16 +41,14 @@ function Chat() {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end', // Align inner div to the bottom
-        
+        border:"1px solid black",
+        borderRadius:"12px"
       }}
     >
-      <h1>
-        Legal Assistant
-      </h1>
-      <div style={{ flex: '1', overflowY: 'auto', marginBottom: '1rem' }}>
+      <div style={{ flex: '1', overflowY: 'auto', marginBottom: '1rem', padding:"12px" }}>
         {messages.map((message, index) => (
 
-          <Message key={index} text={message.text} />
+          <Message key={index} text={message.text} isReceived={true} />
         ))}
       </div>
       <div>
@@ -55,14 +58,14 @@ function Chat() {
           onChange={handleInputTextChange}
           onKeyDown={handleKeyPress}
           size="lg"
+          m={"lg"}
           rightSection={
             <IconSend title="Send" onClick={handleSendMessage} />
           }
         />
-
       </div>
-
     </Container>
+    </>
   );
 }
 

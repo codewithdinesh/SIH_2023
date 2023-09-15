@@ -1,3 +1,4 @@
+// import "@/styles/globals.css";
 import { AppProps } from 'next/app';
 import { appWithTranslation } from "next-i18next";
 import Head from 'next/head';
@@ -6,7 +7,6 @@ import NavBar from '@/components/NavBar';
 import Footer from '@/components/Home/Footer.jsx';
 
 
-// import "@/styles/globals.css";
 
 const App = (props) => {
   const { Component, pageProps } = props;

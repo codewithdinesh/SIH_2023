@@ -15,6 +15,7 @@ import Link from "next/link";
 import { IconSearch, IconSitemap, IconTextSize, IconUserCircle, IconAdjustments } from "@tabler/icons-react";
 import { useState } from "react";
 
+
 const useStyles = createStyles((theme) => ({
   div: {
     paddingLeft: theme.spacing.md,
@@ -107,7 +108,9 @@ const NavBar = () => {
   return (
     <div className={classes.header} >
       <div className={classes.inner}>
+        <Link href="/">
         <Image src={"http://localhost:3000/logo.png"} alt="logo" ml={"lg"} width="300px" height="50px" className={classes.Image} style={{ objectFit: "contain" }} />
+        </Link>
         <Group spacing={20} className={classes.grp}>
           <Autocomplete
             className={classes.search}
@@ -177,9 +180,11 @@ const NavBar = () => {
               </ActionIcon>
             </Menu.Target>
             <Menu.Dropdown>
+              <Link href="/account/signup">
               <Menu.Item>
                 Sign up
               </Menu.Item>
+              </Link>
               <Menu.Divider />
               <Menu.Item >
                 Log In

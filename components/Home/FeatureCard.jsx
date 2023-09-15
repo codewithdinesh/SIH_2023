@@ -16,9 +16,9 @@ const FeatureCard = () => {
     const cardData = [
         {
             img: "images/ai-assistant.svg",
-            title: "AI Assistant - Saul",
+            title: "AI Chatbot",
             desc: "Get answers to your queries by our AI chatbot",
-            btnText: "Try Saul"
+            btnText: "Chat Now"
         },
         {
             img: "images/legal-repository.svg",

@@ -10,6 +10,9 @@ import LowerNavBar from '@/components/Home/LowerNavBar';
 
 const inter = Inter({ subsets: ['latin'] })
 
+// import styles from './styles/home.module.css';
+
+
 export default function Home() {
   return (
     <main
