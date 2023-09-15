@@ -8,6 +8,7 @@ const Summarize = () => {
 
         <p> Component:  Upload Doc, Summarise-Response  </p>
         
+        
         </div>
   )
 }

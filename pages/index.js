@@ -15,12 +15,10 @@ export default function Home() {
     <main
       className={`${inter.className}`}
     >
-      <NavBar />
       <LowerNavBar />
       <HeroHeader />
       <FeatureCard />
       <WebFaq />
-      <Footer />
     </main>
   )
 }

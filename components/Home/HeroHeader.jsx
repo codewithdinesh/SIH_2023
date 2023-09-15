@@ -17,13 +17,13 @@ const useStyles = createStyles((theme) => ({
   inner: {
     display: 'flex',
     justifyContent: 'space-between',
-    paddingTop: `calc(${theme.spacing.xl} * 4)`,
-    paddingBottom: `calc(${theme.spacing.xl} * 4)`,
+    paddingTop: `calc(${theme.spacing.md} * 1)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 1)`,
   },
 
   content: {
-    maxWidth: rem(480),
-    marginRight: `calc(${theme.spacing.xl} * 3)`,
+    maxWidth: rem(600),
+    marginRight: `calc(${theme.spacing.xl} * 1)`,
 
     [theme.fn.smallerThan('md')]: {
       maxWidth: '100%',
@@ -33,7 +33,6 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontSize: rem(44),
     lineHeight: 1.2,
     fontWeight: 900,
@@ -70,14 +69,15 @@ const HeroHeader = () => {
   // TODO:laws ko replace karke umbrella naam de do
   return (
     <div>
-      <Container>
+      <Container style={{ maxWidth: "72rem" }}>
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>
-              Welcome to <span className={classes.highlight + " z-0"}>LegalAI</span> Platform <br />
+              Welcome to <span className={classes.highlight + " z-0"}>LegalSathi</span> Platform 👋<br />
             </Title>
+            {/* <Text c="dimmed" mt={40}>We provide</Text> */}
             <List
-              mt={30}
+              mt={40}
               spacing="sm"
               size="sm"
               icon={
@@ -88,22 +88,22 @@ const HeroHeader = () => {
             >
 
               <List.Item>
-                <b>Comprehensive Legal Hub</b> - Contains all laws
+                <b>Comprehensive Legal Hub</b>
               </List.Item>
               <List.Item>
-                <b>Digital Assistance</b> - Intelligent Chatbot for Quick Answers
+                <b>Digital Assistance</b>
               </List.Item>
               <List.Item>
-                <b> Simplified Legal Information</b> - Simplication of legal documents using AI
+                <b> Simplified Legal Information</b>
               </List.Item>
               <List.Item>
-                <b> Connect with Experienced Lawyers </b> - Lawyer marketplace for hiring lawyers
+                <b> Connect with Experienced Lawyers </b>
               </List.Item>
               <List.Item>
-                <b> Streamline Legal Documents </b> - Providing a concise summary, highlighting important clauses, dates, and legal terms
+                <b> Streamline Legal Documents </b>
               </List.Item>
             </List>
-            <Button radius="sm" size="md" mt={30} className={classes.control} rightIcon={<IconArrowRight />}>
+            <Button radius="sm" size="md" mt={70} title="Get started" className={classes.control} rightIcon={<IconArrowRight />}>
               Get started
             </Button>
           </div>

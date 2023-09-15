@@ -4,10 +4,10 @@ import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    marginTop: rem(120),
+    marginTop: rem(100),
     borderTop: `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
       }`,
-    height: rem(80),
+    height: rem(60),
   },
 
   inner: {
@@ -70,7 +70,7 @@ const Footer = () => {
     <div className={classes.footer}>
       <div className={classes.inner}>
 
-        {/* <Image src="" alt="Logo" /> */}
+        <Image src={"./logo.png"} alt="Logo" width="300px" height="50px" m={20} style={{ objectFit: "contain" }} />
         <Group className={classes.links}>{items}</Group>
 
         <Group spacing="xs" position="right" noWrap>

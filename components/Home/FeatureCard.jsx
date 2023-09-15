@@ -8,11 +8,7 @@ const useStyles = createStyles((theme) => ({
         maxWidth: rem(300),
         maxHeight: rem(400)
     },
-    image: {
-        // objectFit: "cover",
-        // width:"100%",
 
-    }
 }))
 
 const FeatureCard = () => {
@@ -20,9 +16,9 @@ const FeatureCard = () => {
     const cardData = [
         {
             img: "images/ai-assistant.svg",
-            title: "AI Assistant",
+            title: "AI Assistant - Saul",
             desc: "Get answers to your queries by our AI chatbot",
-            btnText: "Interact"
+            btnText: "Try Saul"
         },
         {
             img: "images/legal-repository.svg",
@@ -46,7 +42,7 @@ const FeatureCard = () => {
     ]
     return (
         <>
-            <Title align='center' order={1} mb="xl">Features</Title>
+            <Title align='center' order={1} mb={60} mt={100}>Features</Title>
             <Group position='center' styles={{ justify: "space-between" }} >
                 {cardData?.map((item) => (
                     <Card shadow="sm" padding="lg" radius="md" className={classes.card} key={item.index}>
@@ -56,7 +52,7 @@ const FeatureCard = () => {
                                 alt={item.title}
                                 height={160}
                                 className={classes.image}
-                            // fit="contain"
+                                fit="contain"
                             />
                         </Card.Section>
 
@@ -68,7 +64,7 @@ const FeatureCard = () => {
                             {item.desc}
                         </Text>
 
-                        <Button variant="light" color="blue" fullWidth mt="md" radius="md" rightIcon={<IconArrowRight />}>
+                        <Button variant="light" fullWidth mt="md" radius="md" rightIcon={<IconArrowRight />}>
                             {item.btnText}
                         </Button>
                     </Card>

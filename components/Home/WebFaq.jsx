@@ -1,4 +1,4 @@
-import { createStyles, Image, Accordion, Grid, Col, Container, Title, Text } from '@mantine/core';
+import { createStyles, Image, Accordion, Grid, Col, Container, Title, Text, Stack, Button } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -43,30 +43,25 @@ const WebFaq = () => {
       value: "a4",
     },
     {
-      title: "How can I access laws and rights information in a user-friendly way?",
-      ans: "We've designed our platform to make legal information accessible and user-friendly. You can search for specific laws, browse by category, or use our intuitive navigation. We also provide simplified explanations and plain language summaries to help you understand your rights and obligations better.",
-      value: "a5",
-    },
-    {
       title: "Do you offer customer support in all supported languages?",
       ans: "Yes, we provide customer support in all the languages supported by our platform. Our customer support team is here to assist you with any questions or issues you may have, regardless of whether you're communicating in Hindi, Marathi, or English.",
-      value: "a6"
+      value: "a5"
     }
   ]
   const { classes } = useStyles();
 
 
   return (
-    <div className={classes.wrapper}>
-      <Container size="lg">
-        <Grid id="faq-grid" gutter={50}>
+    <div className={classes.wrapper} >
+      <Container size="lg" mt={100}>
+        <Title order={1} className={classes.title} ta={"center"} mb={"30px"}>
+          Still have any queries?
+        </Title>
+        <Grid id="faq-grid" gutter={50} align="center">
           <Col span={10} md={6}>
-            <Image src={"images/faq-image.svg"} alt="Frequently Asked Questions" mt={"xl"} />
+            <Image src={"images/faq-image.svg"} alt="Frequently Asked Questions" mt={"xl"} height={"20rem"} fit='oject' />
           </Col>
           <Col span={12} md={6}>
-            <Title order={1} ta="left" className={classes.title} >
-              Still have any queries?
-            </Title>
             <Accordion chevronPosition="right" defaultValue="q1" >
               {data.map((item) => (
                 <Accordion.Item className={classes.item} value={item.value} key={item.index}>
@@ -85,6 +80,10 @@ const WebFaq = () => {
             </Accordion>
           </Col>
         </Grid>
+        <Stack align="center">
+          <Text fz={40} fw={500} mt={150} mb={20}>What are you waiting for then?</Text>
+          <Button size='lg'>Get Started</Button>
+        </Stack>
       </Container>
     </div>
   );

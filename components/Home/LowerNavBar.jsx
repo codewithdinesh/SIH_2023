@@ -1,317 +1,152 @@
-// Header.js
+import {
+  createStyles,
+  Menu,
+  Center,
+  Header,
+  Container,
+  Group,
+  Button,
+  Text,
+  Burger,
+  rem,
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { IconChevronDown } from '@tabler/icons-react';
 
-"use client"
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { IconArrowBarDown, IconArrowDown, IconChevronCompactDown, IconChevronDown } from '@tabler/icons-react';
-import { IconChevronUp } from '@tabler/icons-react';
+const HEADER_HEIGHT = rem(60);
 
+const useStyles = createStyles((theme) => ({
+  inner: {
+    height: HEADER_HEIGHT,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  links: {
+    [theme.fn.smallerThan('sm')]: {
+      display: 'none',
+    },
+  },
+
+  burger: {
+    [theme.fn.largerThan('sm')]: {
+      display: 'none',
+    },
+  },
+
+  link: {
+    display: 'block',
+    lineHeight: 1,
+    padding: `${rem(8)} ${rem(12)}`,
+    borderRadius: theme.radius.sm,
+    textDecoration: 'none',
+    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
+
+    '&:hover': {
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    },
+  },
+
+  linkLabel: {
+    marginRight: rem(5),
+  },
+}));
+
+
+const navbarLinks = [
+  {
+    label: 'Legal Help',
+    link: '/#',
+
+    // Dropdown options
+    links: [
+      {
+        label: 'Bare Act',
+        link: '/acts',
+      },
+      {
+        label: 'Articles',
+        link: '/articles',
+      },
+      {
+        label: 'Indian Constitution',
+        link: '/constitution',
+      },
+    ],
+  },
+  {
+    label: 'Summarisation',
+    link: '/summarisation',
+  },
+  {
+    label: 'Document Chat',
+    link: '/doc-chat',
+  },
+  {
+    label: 'QNA',
+    link: '/qna',
+  },
+  {
+    label: 'Hire Lawyer',
+    link: '/hire-lawyer',
+  },
+];
 
 const LowerNavBar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const { classes } = useStyles();
+  const [opened, { toggle }] = useDisclosure(false);
+  const items = navbarLinks.map((link) => {
+    const menuItems = link.links?.map((item) => (
+      <Menu.Item key={item.link}>{item.label}</Menu.Item>
+    ));
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const buttonVariants = {
-    navbutton: { rotate: 0 },
-    navclose: { rotate: 90 },
-  };
-
-
-  const toggleDropdown = (index) => {
-    if (openDropdown === index) {
-      setOpenDropdown(null); // Close the dropdown if it's already open
-    } else {
-      setOpenDropdown(index); // Open the dropdown
+    if (menuItems) {
+      return (
+        <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
+          <Menu.Target>
+            <a
+              href={link.link}
+              className={classes.link}
+              onClick={(event) => event.preventDefault()}
+            >
+              <Center>
+                <span className={classes.linkLabel}>{link.label}</span>
+                <IconChevronDown size={rem(12)} stroke={1.5} />
+              </Center>
+            </a>
+          </Menu.Target>
+          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
+        </Menu>
+      );
     }
-  };
 
-
-  const navbarLinks = [
-    {
-      label: 'Legal Aid',
-      link: '/#',
-
-      // Dropdown options
-      links: [
-        {
-          label: 'Bare Act',
-          link: '/acts',
-        },
-        {
-          label: 'Articles',
-          link: '/articles',
-        },
-        {
-          label: 'Indian Constitution',
-          link: '/constitution',
-        },
-      ],
-    },
-
-    {
-      label: 'Ai-help',
-      link: '/#',
-
-      // Dropdown options
-      links: [
-        {
-          label: 'QNA',
-          link: '/qna',
-        },
-        {
-          label: 'Summarisation',
-          link: '/summarisation',
-        },
-        {
-          label: 'Document Chat',
-          link: '/doc-chat',
-        },
-
-        {
-          label: 'Threats',
-          link: '/threats',
-        },
-      ],
-    },
-    {
-      label: 'Hire Lawyer',
-      link: '/hire-lawyer',
-    },
-  ];
+    return (
+      <a
+        key={link.label}
+        href={link.link}
+        className={classes.link}
+        onClick={(event) => event.preventDefault()}
+      >
+        {link.label}
+      </a>
+    );
+  });
 
   return (
-    <header className="bg-background shadow-md text-text ">
-      <div className="container mx-auto px-4 py-4 flex justify-center items-center">
-
-
-        <nav className="lg:flex items-center hidden"
-          onMouseLeave={(e) => {
-            e.preventDefault();
-            toggleDropdown();
-          }}
-        >
-
-          <ul className="flex space-x-4 align-middle items-center font-semibold ">
-
-            {/* Navigation Links */}
-            <ul className="space-x-4 hidden md:flex">
-              {navbarLinks.map((link, index) => (
-
-                <li key={link.label} className="relative group hover:bg-blue-100 p-3 "
-                  onMouseEnter={(e) => {
-                    e.preventDefault();
-                    toggleDropdown(index);
-                  }}
-
-                >
-
-                  {link.links ?
-                    <Link
-                      href={link.link}
-                      className="text-gray-600   hover:text-blue-800 w-full h-full p-3 transition-all "
-
-                    >
-                      <span className=' inline-block space-x-1'>
-                        {link.label}
-                      </span>
-
-                      {
-                        openDropdown === index ?
-                          <IconChevronUp className='inline-block h-full' />
-                          :
-                          <IconChevronDown className='inline-block h-full' />
-
-                      }
-                    </Link>
-                    :
-                    <Link
-                      href={link.link}
-                      className="text-gray-600 hover:text-blue-600 w-full h-full p-3"
-                    >
-                      <span>
-                        {link.label}
-                      </span>
-
-                    </Link>
-                  }
-
-                  {link.links && openDropdown === index && (
-                    <ul className="absolute left-0 mt-2 space-y-2 bg-white">
-
-                      {link.links.map((dropdownLink) => (
-
-                        <Link
-                          href={dropdownLink.link}
-                          key={dropdownLink.label}
-                          className="text-gray-800 hover:text-blue-500 w-full h-full"
-                        >
-                          <li className='relative group hover:bg-blue-100 p-3 w-full h-full'>
-                            {dropdownLink.label}
-                          </li>
-                        </Link>
-                      ))}
-
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
-
-            {/* <li>
-              <Link href="/about">
-                <p className="text-gray-600 hover:text-blue-600  ">About</p>
-              </Link>
-            </li> */}
-            <li>
-              <Link href="/login" >
-                <p className="text-white bg-blue-600 block  hover:bg-blue-700 py-2 px-4 rounded-md font-medium transition-colors duration-300">
-                  Login
-                </p>
-              </Link>
-            </li>
-          </ul>
-
-        </nav>
-
-
-        <button
-          className="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none"
-          onClick={toggleMenu}
-        >
-          <motion.svg
-            className="w-8 h-8"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            initial={isMenuOpen ? 'navclose' : 'navbutton'}
-            animate={isMenuOpen ? 'navclose' : 'navbutton'}
-            variants={buttonVariants}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-7 w-7"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor">
-
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-
-          </motion.svg>
-        </button>
-      </div>
-
-
-      {isMenuOpen && (
-        <div className="lg:hidden bg-white py-2 px-3 border-t z-10 ">
-          <ul className="flex z-10 flex-col space-y-2 items-center min-w-full text-center font-semibold"
-
-            onTouchEnd={(e) => {
-              e.preventDefault();
-              toggleDropdown();
-            }}
-          >
-
-            {navbarLinks.map((link, index) => (
-
-              <li key={link.label} onTouchStart={(e) => {
-                e.preventDefault();
-                toggleDropdown(index);
-              }} className="relative group z-10 hover:bg-blue-100 p-3 w-full h-full "
-
-              >
-
-                {link.links ?
-                  <Link
-                    href={link.link}
-                    className="text-gray-600 z-10 hover:text-blue-800 w-full h-full p-3 transition-all "
-
-                  >
-                    <span className=' inline-block space-x-1'>
-                      {link.label}
-                    </span>
-
-                    {
-                      openDropdown === index ?
-                        <IconChevronUp className='inline-block h-full' />
-                        :
-                        <IconChevronDown className='inline-block h-full' />
-
-                    }
-                  </Link>
-                  :
-                  <Link
-                    href={link.link}
-                    className="text-gray-600 hover:text-blue-600 w-full h-full p-3"
-                  >
-                    <span>
-                      {link.label}
-                    </span>
-
-                  </Link>
-                }
-
-                {link.links && openDropdown === index && (
-                  <ul className="absolute left-0 mt-0 z-10  bg-red-700 w-full ">
-
-                    {link.links.map((dropdownLink) => (
-
-                      <Link
-                        href={dropdownLink.link}
-                        key={dropdownLink.label}
-                        className="text-gray-800 hover:text-blue-500 w-full h-full"
-                      >
-                        <li className='relative group hover:bg-blue-100 p-3 w-full h-full'>
-                          {dropdownLink.label}
-                        </li>
-                      </Link>
-                    ))}
-
-                  </ul>
-                )}
-              </li>
-            ))}
-            <li className='w-full mx-3'>
-              <Link href="/about">
-                <p className="text-gray-600 hover:text-blue-600 min-w-full">About</p>
-              </Link>
-            </li>
-
-            <li className='w-full mx-3'>
-              <Link href="/login">
-                <p className="  text-white w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-md font-medium transition-colors duration-300">
-                  Login
-                </p>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
-    </header>
+    <Header height={HEADER_HEIGHT} sx={{ borderBottom: 0 }} mb={80} pt={"sm"}>
+      <Container className={classes.inner} fluid>
+        <Group>
+          <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
+        </Group>
+        <Group spacing={5} className={classes.links}>
+          {items}
+        </Group>
+      </Container>
+    </Header>
   );
-};
+}
 
 export default LowerNavBar;

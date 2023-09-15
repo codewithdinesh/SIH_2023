@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "@/components/NavBar";
 import {
   Paper,
   createStyles,
@@ -25,9 +24,8 @@ const useStyles = createStyles((theme) => ({
   },
 
   form: {
-    borderRight: `${rem(1)} solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
-    }`,
+    borderRight: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
+      }`,
     minHeight: rem(900),
     maxWidth: rem(450),
     paddingTop: rem(80),
@@ -58,7 +56,7 @@ const Login = () => {
 
   return (
     <div>
-      <Navbar />
+
       <div className={classes.wrapper}>
         <Paper className={classes.form} radius={0} p={30}>
           <Title
@@ -68,7 +66,7 @@ const Login = () => {
             mt="md"
             mb={50}
           >
-            Welcome back to Law and order
+            Welcome back to Legal Sathi
           </Title>
           <form
           // onSubmit={form.onSubmit((values) => console.log(values))}
@@ -78,7 +76,7 @@ const Login = () => {
               required
               label="Email"
               placeholder="your@email.com"
-              // {...form.getInputProps("email")}
+            // {...form.getInputProps("email")}
             />
             <PasswordInput
               withAsterisk
