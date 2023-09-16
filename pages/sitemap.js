@@ -1,4 +1,4 @@
-import SiteMap from '@/components/Sitemap'
+import SiteMap from '@/components/SiteMap'
 import React from 'react'
 
 const Sitemap = () => {
