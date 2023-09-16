@@ -13,6 +13,7 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 
 const HEADER_HEIGHT = rem(60);
@@ -44,7 +45,7 @@ const useStyles = createStyles((theme) => ({
     borderRadius: theme.radius.sm,
     textDecoration: 'none',
     color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
+    fontSize: theme.fontSizes.md,
     fontWeight: 500,
 
     '&:hover': {
@@ -76,28 +77,25 @@ const navbarLinks = [
       {
         label: 'Indian Constitution',
         link: '/constitution',
-      },
+      }
     ],
   },
   {
     label: 'Summarization',
-    link: '/summarisation',
+    link: '/ai/summarize',
   },
   {
     label: 'Document Chat',
-    link: '/ai/docs',
+    link: '/ai/chat/doc',
   },
   {
     label: 'Chatbot',
     link: '/ai/chat',
   },
-  {
-    label: 'Hire Lawyer',
-    link: '/hire-lawyer',
-  },
 ];
 
 const LowerNavBar = () => {
+  const { t } = useTranslation("common");
   const { classes } = useStyles();
   const [opened, { toggle }] = useDisclosure(false);
   const items = navbarLinks.map((link) => {
@@ -126,14 +124,14 @@ const LowerNavBar = () => {
     }
 
     return (
-      <a
+      <Link
         key={link.label}
         href={link.link}
         className={classes.link}
-        onClick={(event) => event.preventDefault()}
+        // onClick={(event) => event.preventDefault()}
       >
         {link.label}
-      </a>
+      </Link>
     );
   });
 

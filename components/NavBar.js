@@ -1,19 +1,21 @@
 import {
   createStyles,
-  Header,
-  Autocomplete,
   Group,
   rem,
   Image,
   Menu,
   Button,
   Text,
-  ActionIcon
+  Center,
+
 } from "@mantine/core";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { IconSearch, IconSitemap, IconTextSize, IconUserCircle, IconAdjustments } from "@tabler/icons-react";
+import { IconChevronDown, IconSitemap, IconTextSize, IconUserCircle, IconAdjustments } from "@tabler/icons-react";
 import { useState } from "react";
+import { useTranslation } from "next-i18next";
+
+
 
 
 const useStyles = createStyles((theme) => ({
@@ -40,7 +42,7 @@ const useStyles = createStyles((theme) => ({
 
   inner: {
     height: rem(56),
-    margin: "15px 10px",
+    margin: "15px 30px",
     [theme.fn.smallerThan("sm")]: {
       height: rem(100),
       display: "flex",
@@ -72,6 +74,18 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  links: {
+    [theme.fn.smallerThan('sm')]: {
+      display: 'none',
+    },
+  },
+
+  burger: {
+    [theme.fn.largerThan('sm')]: {
+      display: 'none',
+    },
+  },
+
   link: {
     display: "block",
     lineHeight: 1,
@@ -92,9 +106,49 @@ const useStyles = createStyles((theme) => ({
           : theme.colors.gray[0],
     },
   },
+  linkLabel: {
+    marginRight: rem(5),
+  },
 }));
 
+
 const NavBar = () => {
+  const { t } = useTranslation("common");
+
+  const navbarLinks = [
+    {
+      label: t('Legal Help'),
+      link: '/#',
+
+      // Dropdown options
+      links: [
+        {
+          label: t('Bare Act'),
+          link: '/acts',
+        },
+        {
+          label: t('Articles'),
+          link: '/articles',
+        },
+        {
+          label: t('Indian Constitution'),
+          link: '/constitution',
+        }
+      ],
+    },
+    {
+      label: t('Summarization'),
+      link: '/ai/summarize',
+    },
+    {
+      label: t('Document Chat'),
+      link: '/ai/chat/doc',
+    },
+    {
+      label: t('Chatbot'),
+      link: '/ai/chat',
+    },
+  ];
   const { classes } = useStyles();
   const [currentLanguage, setCurrentLanguage] = useState("English");
   let fontSize = "16";
@@ -105,30 +159,55 @@ const NavBar = () => {
     push("/", undefined, { locale: l });
   };
 
+  const items = navbarLinks.map((link) => {
+    const menuItems = link.links?.map((item) => (
+      <Menu.Item key={item.link}><Link href={item.link} style={{ textDecoration: "none", color: "black" }}>{item.label}</Link></Menu.Item>
+    ));
+
+    if (menuItems) {
+      return (
+        <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
+          <Menu.Target>
+            <Link
+              href={link.link}
+              className={classes.link}
+              onClick={(event) => event.preventDefault()}
+            >
+              <Center>
+                <span className={classes.linkLabel}>{link.label}</span>
+                <IconChevronDown size={rem(12)} stroke={1.5} />
+              </Center>
+            </Link>
+          </Menu.Target>
+          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
+        </Menu>
+      );
+    }
+
+    return (
+      <Link
+        key={link.label}
+        href={link.link}
+        className={classes.link}
+      // onClick={(event) => event.preventDefault()}
+      >
+        {link.label}
+      </Link>
+    );
+  });
+
   return (
     <div className={classes.header} >
       <div className={classes.inner}>
         <Link href="/">
-        <Image src={"http://localhost:3000/logo.png"} alt="logo" ml={"lg"} width="300px" height="50px" className={classes.Image} style={{ objectFit: "contain" }} />
+          <Image src={"http://localhost:3000/logo.png"} alt="logo" ml={"lg"} width="200px" className={classes.Image} style={{ objectFit: "contain" }} />
         </Link>
+        <Group>
+          {items}
+        </Group>
         <Group spacing={20} className={classes.grp}>
-          <Autocomplete
-            className={classes.search}
-            placeholder="Search"
-            icon={<IconSearch size="1rem" stroke={1.5} />}
-            data={[]}
-          />
+
           <Button.Group>
-            <Button
-              variant="outline"
-              onClick={() => setCurrentFontSize(currentFontSize + 1)}
-            >
-              <IconTextSize />
-              <span style={{ fontSize: "1.5rem" }}>+</span>
-            </Button>
-            <Button className=" " variant="filled" onClick={() => setCurrentFontSize(fontSize)}>
-              Reset
-            </Button>
             <Button
               variant="outline"
               onClick={() => setCurrentFontSize(currentFontSize - 1)}
@@ -136,9 +215,20 @@ const NavBar = () => {
               <IconTextSize />
               <span style={{ fontSize: "1.5rem" }}>-</span>
             </Button>
+            <Button
+              variant="outline"
+              onClick={() => setCurrentFontSize(currentFontSize + 1)}
+            >
+              <IconTextSize />
+              <span style={{ fontSize: "1.5rem" }}>+</span>
+            </Button>
           </Button.Group>
-          <IconSitemap />
-          <Menu shadow="md" width={200}>
+
+          <Link href={"/sitemap"} style={{ textDecoration: "none", color: "black" }} >
+            <Button rightIcon={<IconSitemap />}>{t("SiteMap")}</Button> 
+          </Link>
+
+          <Menu shadow="md" width={200} size={'md'}>
             <Menu.Target>
               <Button variant="filled" >{currentLanguage}</Button>
             </Menu.Target>
@@ -166,28 +256,10 @@ const NavBar = () => {
               <Menu.Item
                 onClick={() => {
                   setCurrentLanguage("मराठी");
-                  handleClick("ma");
+                  handleClick("mr");
                 }}
               >
                 मराठी
-              </Menu.Item>
-            </Menu.Dropdown>
-          </Menu>
-          <Menu shadow="md" width={200}>
-            <Menu.Target>
-              <ActionIcon size="xl" variant="outline">
-                <IconUserCircle size="2.125rem" />
-              </ActionIcon>
-            </Menu.Target>
-            <Menu.Dropdown>
-              <Link href="/account/signup">
-              <Menu.Item>
-                Sign up
-              </Menu.Item>
-              </Link>
-              <Menu.Divider />
-              <Menu.Item >
-                Log In
               </Menu.Item>
             </Menu.Dropdown>
           </Menu>

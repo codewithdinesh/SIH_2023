@@ -70,7 +70,7 @@ const Footer = () => {
     <div className={classes.footer}>
       <div className={classes.inner}>
 
-        <Image src={"./logo.png"} alt="Logo" width="300px" height="50px" m={20} style={{ objectFit: "contain" }} />
+        <Image src={"./logo.png"} alt="Logo" width="200px" m={20} style={{ objectFit: "contain" }} />
         <Group className={classes.links}>{items}</Group>
 
         <Group spacing="xs" position="right" noWrap>

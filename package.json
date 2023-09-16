@@ -19,6 +19,7 @@
     "@mantine/next": "^6.0.20",
     "@tabler/icons-react": "^2.34.0",
     "autoprefixer": "10.4.15",
+    "axios": "^1.5.0",
     "dayjs": "^1.11.9",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
@@ -31,5 +32,8 @@
     "react-dom": "18.2.0",
     "react-i18next": "^13.2.2",
     "tailwindcss": "3.3.3"
+  },
+  "devDependencies": {
+    "@gradio/client": "^0.3.1"
   }
 }

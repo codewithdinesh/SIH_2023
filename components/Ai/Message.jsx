@@ -8,14 +8,15 @@ function Message({ text, isReceived }) {
 
   const messageStyles = {
     marginBottom: '0.5rem', // Adjust as needed
-    backgroundColor: isReceived ? '#ffedde' : '#4b2f01', // Adjust colors
+    backgroundColor: isReceived ? '#ffedde' : 'white', // Adjust colors
+    Border: isReceived ? '' : '1px solid black', // Adjust colors
     color: isReceived ? '#120e07' : 'white',
     fontWeight: "200"
 
   };
 
   const paperStyles = {
-    padding: 'sm',
+    padding: '1rem',
     maxWidth: '80%',
     padding: '1rem',
     flex: "1",
@@ -31,7 +32,9 @@ function Message({ text, isReceived }) {
     }}>
       <Paper style={paperStyles}>
         {/* <Text size="sm">{text}</Text> */}
-        <ActionIcon variant="light" mb={"lg"}>
+        <ActionIcon variant="light" mb={"lg"} style={{
+          borderRadius: '50%'
+        }}>
           <IconUser size="1.125rem" />
         </ActionIcon>
         <Textarea

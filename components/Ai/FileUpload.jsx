@@ -81,7 +81,7 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-const DropzoneButton = () => {
+const FileUpload = () => {
     const { classes, theme } = useStyles();
     const openRef = useRef(null);
 
@@ -135,4 +135,4 @@ const DropzoneButton = () => {
     );
 }
 
-export default DropzoneButton
+export default FileUpload

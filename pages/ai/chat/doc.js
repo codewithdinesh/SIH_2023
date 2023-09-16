@@ -5,9 +5,6 @@ import React from 'react'
 const doc = () => {
   return (
     <Container size={'xl'}>
-
-    
-
       <FileUpload />
     </Container>
   )
