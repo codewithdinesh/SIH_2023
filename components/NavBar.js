@@ -200,7 +200,7 @@ const NavBar = () => {
     <div className={classes.header} >
       <div className={classes.inner}>
         <Link href="/">
-          <Image src={"http://localhost:3000/logo.png"} alt="logo" ml={"lg"} width="200px" className={classes.Image} style={{ objectFit: "contain" }} />
+          <Image src={"https://sih-2023-gilt.vercel.app/logo.png"} alt="logo" ml={"lg"} width="200px" className={classes.Image} style={{ objectFit: "contain" }} />
         </Link>
         <Group>
           {items}
@@ -225,7 +225,7 @@ const NavBar = () => {
           </Button.Group>
 
           <Link href={"/sitemap"} style={{ textDecoration: "none", color: "black" }} >
-            <Button rightIcon={<IconSitemap />}>{t("SiteMap")}</Button> 
+            <Button rightIcon={<IconSitemap />}>{t("SiteMap")}</Button>
           </Link>
 
           <Menu shadow="md" width={200} size={'md'}>
