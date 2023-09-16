@@ -1,7 +1,8 @@
+
 import SiteMap from '@/components/SiteMap'
 import React from 'react'
 
-const Sitemap = () => {
+const sitemap = () => {
     return (
         <div>
             <SiteMap />
@@ -9,4 +10,4 @@ const Sitemap = () => {
     )
 }
 
-export default Sitemap
+export default sitemap
