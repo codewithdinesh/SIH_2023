@@ -1,38 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LegalSathi - Comprehensive Legal Assistance Platform
 
-## Getting Started
+<img src="https://sih-2023-gilt.vercel.app/logo.png" style="background-color:white;" alt="LegalSathi Logo" />
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+LegalSathi is an AI-powered platform designed to simplify legal information and processes. With features such as an AI chatbot, legal document summarizer, lawyer marketplace, and a well-organized repository of legal documents, LegalSathi offers a one-stop solution for all your legal needs.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Demo
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Visit the live platform here: [LegalSathi Platform](https://sih-2023-gilt.vercel.app/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 🛠 Features
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### 1. AI Chatbot 🤖
+Get instant answers to your legal queries using our AI-driven chatbot. Powered by natural language processing (NLP), it simulates a conversation with a lawyer, giving you reliable legal insights.
+ng tenancy laws.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 2. Legal Repository 📚
+Access an organized collection of legal documents across various fields.
 
-## Learn More
+### 3. Lawyer Connect 🔗
+Use the Lawyer Marketplace to find and hire experienced legal professionals for your legal queries.
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Legal Summarizer 📄
+Simplify complex legal documents by using our AI-powered summarizer. Just upload your document, and our system will break it down into an easily understandable summary.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🔧 Tech Stack
 
-## Deploy on Vercel
+- **Frontend**: Next.js, Tailwind CSS
+- **Backend**: Next.js
+- **AI & NLP**: OpenAI API
+- **Database**: MongoDB, Google Firebase
+- **Deployment**: Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🖼️ Screenshots
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![image](https://github.com/user-attachments/assets/f3cabb7f-f6c9-4a0c-83c1-0074f70ed8e4)
